@@ -22,7 +22,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px 0;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             z-index: 1000;
@@ -53,6 +53,7 @@
 
         /* Hero Section */
         .hero {
+            position: relative;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -60,28 +61,53 @@
             align-items: center;
             text-align: center;
             padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
         }
 
         .hero h1 {
             font-size: 48px;
             font-weight: 300;
             margin-bottom: 10px;
+            color: #ffffff;
+            z-index: 1;
         }
 
         .hero .subtitle {
             font-size: 18px;
             font-weight: 300;
-            color: #666666;
+            color: #ffffff;
             margin-bottom: 20px;
             max-width: 600px;
+            z-index: 1;
         }
 
         .hero .bio {
             font-size: 16px;
             font-weight: 300;
-            color: #666666;
+            color: #ffffff;
             max-width: 600px;
             line-height: 1.6;
+            z-index: 1;
         }
 
         /* Gallery Section */
@@ -89,6 +115,7 @@
             padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
+            background-color: #ffffff;
         }
 
         .gallery h2 {
@@ -230,6 +257,10 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <video autoplay muted loop playsinline>
+            <source src="videos/video1.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
         <h1>La Dino</h1>
         <p class="subtitle">History of Art Student | London</p>
         <p class="bio">La Dino is a 19-year-old art enthusiast studying History of Art in London. With a passion for exploring galleries and a keen eye for detail, she brings creativity and curiosity to her work, capturing the essence of everyday objects through her unique perspective.</p>
@@ -239,7 +270,6 @@
     <section id="gallery" class="gallery">
         <h2>My Work</h2>
         <div class="gallery-grid">
-            <!-- Placeholder for artwork -->
             <div class="gallery-item">
                 <img src="images/image1.jpg" alt="Artwork 1">
                 <div class="overlay">
@@ -261,7 +291,6 @@
                     <p>A brief description of the artwork, its inspiration, or medium.</p>
                 </div>
             </div>
-            <!-- Add more gallery items as needed -->
         </div>
     </section>
 
