@@ -110,6 +110,30 @@
             z-index: 1;
         }
 
+        /* Audio Controls */
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .audio-control button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .audio-control button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
         /* Gallery Section */
         .gallery {
             padding: 80px 20px;
@@ -242,10 +266,23 @@
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
+
+            .audio-control button {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Audio -->
+    <audio id="background-audio" autoplay loop muted>
+        <source src="audio/myaudio1mp3">
+    </audio>
+    <div class="audio-control">
+        <button id="audio-toggle">Unmute Audio</button>
+    </div>
+
     <!-- Navigation -->
     <nav>
         <ul>
@@ -310,6 +347,19 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Audio toggle functionality
+        const audio = document.getElementById('background-audio');
+        const audioToggle = document.getElementById('audio-toggle');
+        audioToggle.addEventListener('click', () => {
+            if (audio.muted) {
+                audio.muted = false;
+                audioToggle.textContent = 'Mute Audio';
+            } else {
+                audio.muted = true;
+                audioToggle.textContent = 'Unmute Audio';
+            }
         });
     </script>
 </body>
